@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lite Hybrid</string>
+
+    <string name="clear">clear</string>
+    <string name="open_webview">open a webview</string>
+    <string name="run_js">run js code</string>
+</resources>

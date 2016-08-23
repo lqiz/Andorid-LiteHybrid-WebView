@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 友情提示：颜色定义规范-->
+    <!-- <color name="color_透明度(如果有字母则小写)_6位数色值（如果有字母则小写）">
+    #透明度(如果有字母则大写)_6位数色值（如果有字母则大写）</color>-->
+    <!--<color name="wv_color_ffffffff">#ffffffff</color>-->
+    <!--<color name="wv_color_ffdfe1e6">#ffdfe1e6</color>-->
+    <!--<color name="wv_color_ffaaacb0">#ffaaacb0</color>-->
+    <!--<color name="wv_color_ff4bacee">#ff4bacee</color>-->
+    <!--<color name="wv_color_fffafafa">#fffafafa</color>-->
+    <!--<color name="wv_color_fff0f1f5">#fff0f1f5</color>-->
+</resources>
