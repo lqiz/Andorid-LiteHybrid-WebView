@@ -68,21 +68,21 @@ public class WebViewActivity extends Activity {
         preferences.setLoadingView(new LoadingView(this));
         preferences.setLoadingErrorView(new LoadingErrorView(this));
         preferences.set("AppendUserAgent", "hitehybird");
-        if(true) {
+        if (true) {
             preferences.set(LHConstant.IS_DEBUG_MODE, true);
         }
-        webviewFragment.setArguments(preferences, new Invoker1());
+        webviewFragment.setArguments(preferences, new FunctionSet1());
 
         // 启动加载
         webviewFragment.loadUrl(mUrl);
 
     }
 
-    public class Invoker1 {
+    public class FunctionSet1 {
         @INVOKE("popToast")
         public void popToast(JSONObject paras) {
             JSShowDialog jsShowDialog = new JSShowDialog(WebViewActivity.this);
-            jsShowDialog.setJSStr("action: " +  paras.toString());
+            jsShowDialog.setJSStr("action: " + paras.toString());
             jsShowDialog.show();
         }
 
