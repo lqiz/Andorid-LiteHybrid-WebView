@@ -80,3 +80,5 @@ webview 通过 WebChromeClient处理 H5 内js的回调，本框架使用了onJsP
 
 
 Please read the fucking source code， 不好的地方指出来相互学习
+
+QQ 群：77157252
