@@ -1,10 +1,8 @@
-package com.luoruiyi.litehybird;
+package com.haoshiditu.litehybird;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -23,6 +21,9 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 public class SystemWebViewEngine {
     public static final String TAG = "SystemWebViewEngine";
 
@@ -68,7 +69,7 @@ public class SystemWebViewEngine {
     public void handleJsPrompt(String message) throws JSONException {
 
         JSONObject jsObj = new JSONObject(message);
-        String strTarget = jsObj.getString("target");
+        String strTarget = jsObj.getString("invoke");
         JSONObject jsParas = jsObj.getJSONObject("paras");
 
         Target target = methodCache.get(strTarget);
@@ -91,7 +92,7 @@ public class SystemWebViewEngine {
 
         webView.requestFocusFromTouch();
 
-        // 设置背景透明
+        // 设置背景透明，如果无需要可以删掉
         if (preferences.getBoolean(LHConstant.IS_BG_TRANSPARENT, false)) {
             webView.setBackgroundColor(0);
         }
@@ -176,15 +177,8 @@ public class SystemWebViewEngine {
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
 
-        /**
-         * 坑1: 在米4手机上，不断打开关闭 webview，会出现页面不能滑动问题。
-         * android.view.Surface.nativeLockCanvas
-         * android.view.Surface.lockCanvas
-         */
-//        webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-
+        // 在 DEBUG 模式下开启调试模式，方便 H5调试，如果无需要删掉
         if (preferences.getBoolean(LHConstant.IS_DEBUG_MODE, false)) {
-            // 在 DEBUG 模式下开启调试模式
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 webView.setWebContentsDebuggingEnabled(true);
             }

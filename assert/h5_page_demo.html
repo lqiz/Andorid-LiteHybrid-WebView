@@ -1,0 +1,29 @@
+<html>
+<head>
+<script type="text/javascript">
+var obj={};
+var para = {"para1" :"I am a native toast poped by h5"}
+obj.invoke = "popToast";
+obj.paras = para;
+
+function display_alert()
+{
+  prompt(JSON.stringify(obj))
+}
+
+
+function changeBackground(color) {
+   document.body.style.background = color;
+}
+
+</script>
+</head>
+<body>
+
+<input type="button"  onclick="display_alert()"
+style="width:100px; margin-top:200px"
+value="click me" />
+
+</body>
+</html>
+

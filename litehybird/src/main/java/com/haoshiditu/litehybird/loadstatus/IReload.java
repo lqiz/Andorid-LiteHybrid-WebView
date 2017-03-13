@@ -1,4 +1,4 @@
-package com.luoruiyi.litehybird.loadstatus;
+package com.haoshiditu.litehybird.loadstatus;
 
 /**
  * @author luoruiyi

@@ -1,4 +1,4 @@
-package com.luoruiyi.litehybird;
+package com.haoshiditu.litehybird;
 
 import android.webkit.JsPromptResult;
 import android.webkit.WebChromeClient;
@@ -11,7 +11,6 @@ import org.json.JSONException;
 public class LHWebChromeClient extends WebChromeClient {
 
     private static final String TAG = "LHWebChromeClient";
-    private long MAX_QUOTA = 100 * 1024 * 1024;
     protected final SystemWebViewEngine parentEngine;
 
     public LHWebChromeClient(SystemWebViewEngine parentEngine) {
@@ -31,15 +30,4 @@ public class LHWebChromeClient extends WebChromeClient {
         return true;
     }
 
-
-    /**
-     * Handle database quota exceeded notification.
-     */
-    @Override
-    public void onExceededDatabaseQuota(String url, String databaseIdentifier,
-                                        long currentQuota, long estimatedSize,
-                                        long totalUsedQuota, WebStorage.QuotaUpdater quotaUpdater)
-    {
-        quotaUpdater.updateQuota(MAX_QUOTA);
-    }
 }

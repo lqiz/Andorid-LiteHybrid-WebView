@@ -5,27 +5,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.luoruiyi.example.responseview.JSRunDialog;
-import com.luoruiyi.example.responseview.JSShowDialog;
-import com.luoruiyi.example.responseview.JsRunListener;
+import com.haoshiditu.litehybird.INVOKE;
+import com.haoshiditu.litehybird.LHConstant;
+import com.haoshiditu.litehybird.LHPreferences;
+import com.haoshiditu.litehybird.WebViewFragment;
 import com.luoruiyi.example.statusview.LoadingErrorView;
 import com.luoruiyi.example.statusview.LoadingView;
 import com.luoruiyi.lhwebview.R;
-import com.luoruiyi.litehybird.INVOKE;
-import com.luoruiyi.litehybird.LHConstant;
-import com.luoruiyi.litehybird.LHPreferences;
-import com.luoruiyi.litehybird.WebViewFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * 具体承载业务的 webview 页面
+ * 建议：具体业务有各自独立的 webview 页面，但是公用的函数集合，独立公用
+ */
 public class WebViewActivity extends Activity {
     private WebViewFragment webviewFragment;
     private TextView tvTitle;
     private String mUrl = "";
     private TextView rightButton;
-    private JSRunDialog jsRunDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +40,11 @@ public class WebViewActivity extends Activity {
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsRunDialog = new JSRunDialog(WebViewActivity.this);
-                jsRunDialog.setJsRunListener(new JsRunListener() {
-                    @Override
-                    public void runJs(String jsStr) {
-                        jsRunDialog.dismiss();
-                        jsStr = jsStr.trim();
-                        jsStr = "javascript:window." + jsStr;
-                        if (jsStr != null && jsStr.isEmpty()) {
-                            JSReference.setJS(WebViewActivity.this.getApplicationContext(), jsStr);
-                            webviewFragment.loadingJs(jsStr);
-                        }
-                    }
-                });
-                jsRunDialog.show();
+
+               String jsStr = "javascript:window.changeBackground('red')";
+                webviewFragment.loadingJs(jsStr);
+
+
             }
         });
         tvTitle.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +63,8 @@ public class WebViewActivity extends Activity {
         if (true) {
             preferences.set(LHConstant.IS_DEBUG_MODE, true);
         }
+
+
         webviewFragment.setArguments(preferences, new FunctionSet1());
 
         // 启动加载
@@ -81,9 +75,8 @@ public class WebViewActivity extends Activity {
     public class FunctionSet1 {
         @INVOKE("popToast")
         public void popToast(JSONObject paras) {
-            JSShowDialog jsShowDialog = new JSShowDialog(WebViewActivity.this);
-            jsShowDialog.setJSStr("action: " + paras.toString());
-            jsShowDialog.show();
+            String para1 =  paras.optString("para1");
+            Toast.makeText(WebViewActivity.this, para1, Toast.LENGTH_SHORT).show();
         }
 
         /**

@@ -1,4 +1,4 @@
-package com.luoruiyi.litehybird;
+package com.haoshiditu.litehybird;
 /**
  * @author luoruiyi
  * use a flag to monitor whether webview is destoryed

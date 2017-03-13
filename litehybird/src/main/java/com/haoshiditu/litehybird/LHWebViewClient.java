@@ -1,10 +1,9 @@
-package com.luoruiyi.litehybird;
+package com.haoshiditu.litehybird;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceError;
@@ -12,16 +11,17 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.luoruiyi.litehybird.loadstatus.ILoadingErrorView;
-import com.luoruiyi.litehybird.loadstatus.ILoadingView;
-import com.luoruiyi.litehybird.utils.NetworkUtil;
+
+import com.haoshiditu.litehybird.loadstatus.ILoadingErrorView;
+import com.haoshiditu.litehybird.loadstatus.ILoadingView;
+import com.haoshiditu.litehybird.utils.NetworkUtil;
 
 import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * 简单可依赖
+ * 简单拦截，使用自定义的 loading 和 error view
  */
 public class LHWebViewClient extends WebViewClient {
     private Activity activity;
@@ -60,15 +60,11 @@ public class LHWebViewClient extends WebViewClient {
         if (!NetworkUtil.isUrlValid(url)) {
             return true;
         }
-
         super.shouldOverrideUrlLoading(view, url);
-
         if (!isWebViewValid(view)) {
             return true;
         }
-
         view.loadUrl(url);
-
         return true;
     }
 

@@ -1,8 +1,8 @@
-package com.luoruiyi.litehybird;
+package com.haoshiditu.litehybird;
 
 
-import com.luoruiyi.litehybird.loadstatus.ILoadingErrorView;
-import com.luoruiyi.litehybird.loadstatus.ILoadingView;
+import com.haoshiditu.litehybird.loadstatus.ILoadingErrorView;
+import com.haoshiditu.litehybird.loadstatus.ILoadingView;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -61,19 +61,19 @@ public class LHPreferences {
         return defaultValue;
     }
 
-    public ILoadingView getLoadingView() {
-        return loadingView;
-    }
-
     public void setLoadingView(ILoadingView loadingView) {
         this.loadingView = loadingView;
     }
 
-    public ILoadingErrorView getLoadingErrorView() {
-        return loadingErrorView;
+    public ILoadingView getLoadingView() {
+        return loadingView;
     }
 
     public void setLoadingErrorView(ILoadingErrorView loadingErrorView) {
         this.loadingErrorView = loadingErrorView;
+    }
+
+    public ILoadingErrorView getLoadingErrorView() {
+        return loadingErrorView;
     }
 }

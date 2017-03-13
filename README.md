@@ -44,8 +44,27 @@ GIT 地址：[LiteHybrid](https://github.com/luoruiyi/LiteHybrid)。其代码分
 	3. 方法 @INVOKE("popToast") 注解中的 popToast等字段，对应 H5 传递来的 XXX_METHOD，采用字符串对比方式定位应该调用函数。
 
 
+#### H5回调调试
+请在handleJsPrompt 处设置断点，查看H5 返回值，并进入函数体调试，看json解析是否抛出异常。
+```
+    @Override
+    public boolean onJsPrompt(WebView view, String origin,
+                              String message, String defaultValue,
+                              final JsPromptResult result) {
+        try {
+            parentEngine.handleJsPrompt(message);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        result.confirm();
+        return true;
+    }
+```
 
-####webview 使用经验
+#### NA 调用 JS
+
+在 WebViewActivity 里参考 `javascript:window.changeBackground('red')`
+
 
 
 #####H5页面加载过程中的状态处理
@@ -68,7 +87,8 @@ webview 通过 WebChromeClient处理 H5 内js的回调，本框架使用了onJsP
 
 
 
-#####其他
+#####其他 webview 使用经验
+
 
 1. webview 在被销毁后，litehybrid的 LHWebView 中有标志位标志进行判断，因为webview销毁后并不立即为空，再调用可能会引发异常。此处同Android SDK中的的 webviewfragment处理一致。
 

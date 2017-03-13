@@ -7,48 +7,36 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 
+import com.haoshiditu.litehybird.LHConstant;
 import com.luoruiyi.lhwebview.R;
-import com.luoruiyi.litehybird.LHConstant;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    private EditText urlText;
-    private Button clean, open;
+    private Button  open;
+
+    // 该文件在本地 assert/h5_page_demo.html, 与服务器上完全一致，
+    // 但是注意,如果使用本地文件，LHWebViewClient 里有 NetworkUtil.isUrlValid 的校验，需要删掉
+    private String url = "http://www.haoshiditu.com/h5_page_demo.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        urlText = (EditText) findViewById(R.id.urlText);
-        clean = (Button) findViewById(R.id.clean);
         open = (Button) findViewById(R.id.open);
-        clean.setOnClickListener(this);
         open.setOnClickListener(this);
-        urlText.setText(UrlPreference.getUrl(this.getApplicationContext()));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.clean:
-                urlText.setText("");
-                save("");
-                break;
             case R.id.open:
-                Editable url = urlText.getText();
                 if (!TextUtils.isEmpty(url)) {
-                    save(url.toString().trim());
-                    openWebView(url.toString().trim());
+                    openWebView(url);
                 }
                 break;
         }
-    }
-
-    public void save(String url) {
-        UrlPreference.setUrl(this.getApplicationContext(), url);
     }
 
     public void openWebView(String url) {

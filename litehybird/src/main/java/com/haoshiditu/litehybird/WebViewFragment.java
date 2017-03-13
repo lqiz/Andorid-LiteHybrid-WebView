@@ -1,4 +1,4 @@
-package com.luoruiyi.litehybird;
+package com.haoshiditu.litehybird;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.luoruiyi.lhwebview.R;
-import com.luoruiyi.litehybird.loadstatus.ILoadingErrorView;
-import com.luoruiyi.litehybird.loadstatus.ILoadingView;
+import com.haoshiditu.litehybird.loadstatus.ILoadingErrorView;
+import com.haoshiditu.litehybird.loadstatus.ILoadingView;
+
 
 /**
  * @author luoruiyi

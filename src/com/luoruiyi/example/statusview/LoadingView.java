@@ -4,8 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.haoshiditu.litehybird.loadstatus.ILoadingView;
 import com.luoruiyi.lhwebview.R;
-import com.luoruiyi.litehybird.loadstatus.ILoadingView;
 
 /**
  * @author luoruiyi

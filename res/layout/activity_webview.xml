@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
@@ -8,31 +9,32 @@
         android:layout_alignParentTop="true"
         android:background="#ff4bacee">
 
-            <TextView
-                android:drawableLeft="@drawable/ic_back_normal"
-                android:id="@+id/tv_title"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:ellipsize="end"
-                android:maxWidth="252sp"
-                android:singleLine="true"
-                android:textColor="#ffffffff"
-                android:textSize="18sp" />
         <TextView
-            android:paddingLeft="10dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/right_button"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/ic_back_normal"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxWidth="252sp"
+            android:textColor="#ffffffff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/right_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:ellipsize="end"
             android:maxWidth="252sp"
-            android:singleLine="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:maxLines="1"
             android:text="@string/run_js"
             android:textColor="#ffffffff"
             android:textSize="18sp" />
@@ -40,9 +42,9 @@
 
     <fragment
         android:id="@+id/fg_webview"
-        android:layout_below="@+id/rl_title"
-        android:name="com.luoruiyi.litehybird.WebViewFragment"
+        android:name="com.haoshiditu.litehybird.WebViewFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_title" />
 
 </RelativeLayout>
