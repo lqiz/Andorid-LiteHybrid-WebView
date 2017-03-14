@@ -1,6 +1,6 @@
 ### 轻量级 H5 Native Hybrid 框架
 轻量级litehybrid框架适合适合大多数 app 的 H5 Native 交互的，交互原理较为简单。
-GIT 地址：[LiteHybrid](https://github.com/luoruiyi/LiteHybrid)。其代码分两部分，litehybird/ 为框架代码。 example/ 为示例代码，
+GIT 地址：[LiteHybrid](https://github.com/luoruiyi/LiteHybrid)。其代码分两部分，litehybird 为框架代码。 主工程 为示例代码，
 
 
 ####原理：
@@ -44,7 +44,7 @@ GIT 地址：[LiteHybrid](https://github.com/luoruiyi/LiteHybrid)。其代码分
 	3. 方法 @INVOKE("popToast") 注解中的 popToast等字段，对应 H5 传递来的 XXX_METHOD，采用字符串对比方式定位应该调用函数。
 
 
-#### H5回调调试
+#### H5调用NA调试
 请在handleJsPrompt 处设置断点，查看H5 返回值，并进入函数体调试，看json解析是否抛出异常。
 ```
     @Override
@@ -61,13 +61,12 @@ GIT 地址：[LiteHybrid](https://github.com/luoruiyi/LiteHybrid)。其代码分
     }
 ```
 
-#### NA 调用 JS
-
+#### NA调用JS调试
 在 WebViewActivity 里参考 `javascript:window.changeBackground('red')`
 
 
 
-#####H5页面加载过程中的状态处理
+#### H5页面加载过程中的状态处理
 webview 通过WebViewClient 处理H5页面加载过程中的状态，页面加载时候, WebviewClient 给出的回调调用顺序不同，通常使用的三种回调分析如下：
 
 正常情况下 
@@ -87,7 +86,7 @@ webview 通过 WebChromeClient处理 H5 内js的回调，本框架使用了onJsP
 
 
 
-#####其他 webview 使用经验
+#### 其他 webview 使用经验
 
 
 1. webview 在被销毁后，litehybrid的 LHWebView 中有标志位标志进行判断，因为webview销毁后并不立即为空，再调用可能会引发异常。此处同Android SDK中的的 webviewfragment处理一致。
@@ -99,6 +98,6 @@ webview 通过 WebChromeClient处理 H5 内js的回调，本框架使用了onJsP
 4. webview onPagefinished 后，js 不一定完全加载成功。最好方式是用JS的回调通知native调用H5内js时机准备好。
 
 
-Please read the fucking source code， 不好的地方指出来相互学习
+PRFSC， 不好的地方指出来相互学习
 
 QQ 群：77157252
